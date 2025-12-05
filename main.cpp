@@ -33,11 +33,21 @@ int main(){
   //tell GLFW to call this function every window resize
   glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+  // render loop
   while(!glfwWindowShouldClose(window)){
+
+    // input
     processInput(window);
+
+    // rendering commands here
+    glClearColor(0.2f,0.3f,0.3f,1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // check and call events and swap buffers
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
+  
   // clean/delete all of GLFW resources
   glfwTerminate();
   return 0;
